@@ -1,0 +1,58 @@
+<resources>
+    <!-- MainActivity -->
+    <string name="app_name"><b><u>Coollection</u></b></string>
+    <string name="engineer1">Harold Samuel Barrera Niño</string>
+    <string name="engineer2">William David Florez</string>
+    <string name="engineer3">Cristian Camilo Forero</string>
+
+    <!-- LoginActivity -->
+    <string name="log_titulo"><b><i>LOGIN</i></b></string>
+    <string name="log_login">Ingresar</string>
+    <string name="log_goRegister">Registrarse</string>
+    <string name="log_goAlcance">Ver Alcances</string>
+    <string name="log_hintUser"><i>Nombre de usuario</i></string>
+    <string name="log_hintPass"><i>Clave</i></string>
+    <string name="log_question"><i>¿No tienes una cuenta? REGISTRATE AQUI!!!</i></string>
+    <string name="log_question2"><b><u>VER ALCANCES DEL PROYECTO</u></b></string>
+    <string name="log_yamil">ACTIVIDAD SPINNER</string>
+
+    <!-- RegisterActivity -->
+    <string name="reg_titulo"><b><i>REGISTER</i></b></string>
+    <string name="reg_register">Registrarse</string>
+    <string name="reg_goLogin">Login</string>
+    <string name="reg_hintNombre"><i>Nombre</i></string>
+    <string name="reg_hintApellido"><i>Apellido</i></string>
+    <string name="reg_hintCorreo"><i>Correo electronico</i></string>
+    <string name="reg_hintUser"><i>Nombre de usuario</i></string>
+    <string name="reg_hintPass"><i>Clave</i></string>
+    <string name="reg_question"><i>¿Ya tienes una cuenta? INICIA SESION AQUI!!!</i></string>
+
+    <!-- AdminActivity -->
+    <string name="admin_titulo"><b><i><u>MODO ADMINISTRADOR</u></i></b></string>
+    <string name="admin_tablas"><b><u>TABLAS</u></b></string>
+    <string name="admin_tablaUsuarios">Usuarios</string>
+    <string name="admin_tablaComentarios">Comentarios</string>
+    <string name="admin_tablaPublicaciones">Publicaciones</string>
+    <string name="admin_tablaImagenes">Imagenes</string>
+    <string name="admin_tablaPerfiles">Perfiles</string>
+
+    <!-- UsuarioActivity -->
+    <string name="user_profile"><b><u>VER PERFIL</u></b></string>
+    <string name="user_editprofile">EDIT</string>
+
+    <!-- Items -->
+    <!-- perfil -->
+    <string name="perIt_idperfil"><b>ID PERFIL:</b></string>
+    <string name="perIt_idusuario"><b>ID USUARIO:</b></string>
+    <string name="perIt_tipo"><b>TIPO:</b></string>
+    <string name="perIt_codigo"><b>CODIGO:</b></string>
+
+    <!-- comentario -->
+    <string name="comIt_idpublicacion"><b>ID PUBLICACION:</b></string>
+    <string name="comIt_idusuario"><b>ID USUARIO:</b></string>
+
+    <!-- publicacion -->
+    <string name="pubIt_idimagen"><b>ID IMAGEN:</b></string>
+    <string name="pubIt_idusuario"><b>ID USUARIO:</b></string>
+
+</resources>

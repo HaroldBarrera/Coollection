@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reg_titulo"
+        android:gravity="center"
+        android:textSize="70sp"
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:id="@+id/txtRegNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reg_hintNombre"
+        android:textSize="25sp"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/txtRegApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reg_hintApellido"
+        android:textSize="25sp"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/txtRegCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reg_hintCorreo"
+        android:textSize="25sp"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/txtRegUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reg_hintUser"
+        android:textSize="25sp"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/txtRegPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reg_hintPass"
+        android:textSize="25sp"
+        android:layout_margin="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reg_register"
+            android:textSize="25sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reg_question"
+            android:gravity="center"/>
+
+
+        <Button
+            android:id="@+id/btnIrLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reg_goLogin"
+            android:textSize="25sp"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
