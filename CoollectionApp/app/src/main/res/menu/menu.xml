@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Menu_Overflow">
+    <item android:id="@+id/participantes"
+        android:title="Participantes"/>
+    <item android:id="@+id/info_app"
+        android:title="Acerca de la App"/>
+    <item android:id="@+id/salir"
+        android:title="Salir"/>
+</menu>

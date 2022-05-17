@@ -37,7 +37,7 @@ public class PHPController {
     RequestQueue requestQueue;
 
     //private static String IP = "192.168.10.17"; //Casa
-    private static String IP = "172.17.2.148"; //USB
+    private static String IP = "172.17.1.224"; //USB
 
     //Usuario URLS
     private static String URLREGISTER = "http://"+IP+"/coollection/usuarios/register.php";

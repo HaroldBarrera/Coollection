@@ -32,8 +32,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".OpcionesUsuarioActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:exported="false"/>
         <activity
             android:name=".LoginActivity"
             android:exported="false"
