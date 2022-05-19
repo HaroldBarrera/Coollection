@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
@@ -16,6 +17,9 @@ public class LoginActivity extends AppCompatActivity {
     TextView mostrarAlcances;
 
     PHPController phpController;
+
+    ProgressBar progressBarlogin;
+    private boolean cargando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnIrRegister = (Button) findViewById(R.id.btnIrRegister);
         btnMostrarAlcances = (Button) findViewById(R.id.btnMostrarAlcances);
+        progressBarlogin = (ProgressBar) findViewById(R.id.progresBarLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,5 +71,12 @@ public class LoginActivity extends AppCompatActivity {
         String username = txtLogUser.getText().toString().trim();
         String password = txtLogPass.getText().toString().trim();
         phpController.Login(username, password);
+        if(cargando) {
+            progressBarlogin.setVisibility(View.GONE);
+        }
+        else {
+            progressBarlogin.setVisibility(View.VISIBLE);
+        }
+        cargando = !cargando;
     }
 }

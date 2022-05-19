@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -15,6 +16,9 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister, btnIrLogin;
 
     PHPController phpController;
+
+    ProgressBar barraProgreso;
+    private boolean cargando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtRegPass = (EditText) findViewById(R.id.txtRegPass);
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnIrLogin = (Button) findViewById(R.id.btnIrLogin);
+        barraProgreso = (ProgressBar) findViewById(R.id.progresBarRegister);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +46,13 @@ public class RegisterActivity extends AppCompatActivity {
                 username = txtRegUser.getText().toString().trim();
                 password = txtRegPass.getText().toString().trim();
                 phpController.Register(nombre, apellido, correo, username, password);
+                if(cargando) {
+                    barraProgreso.setVisibility(View.GONE);
+                }
+                else {
+                    barraProgreso.setVisibility(View.VISIBLE);
+                }
+                cargando = !cargando;
             }
         });
 

@@ -95,4 +95,11 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"/>
 
+    <ProgressBar
+        android:id="@+id/progresBarLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"/>
 </LinearLayout>

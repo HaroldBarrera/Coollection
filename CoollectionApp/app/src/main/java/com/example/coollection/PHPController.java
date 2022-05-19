@@ -37,7 +37,7 @@ public class PHPController {
     RequestQueue requestQueue;
 
     //private static String IP = "192.168.10.17"; //Casa
-    private static String IP = "172.17.1.224"; //USB
+    private static String IP = "172.17.2.67"; //USB
 
     //Usuario URLS
     private static String URLREGISTER = "http://"+IP+"/coollection/usuarios/register.php";
@@ -45,6 +45,7 @@ public class PHPController {
     private static String URLREADALLUSER = "http://"+IP+"/coollection/usuarios/readAll.php";
     private static String URLEDITUSER = "http://"+IP+"/coollection/usuarios/update.php";
     private static String URLDELETEUSER = "http://"+IP+"/coollection/usuarios/delete.php";
+    private static String URLREADUSER = "http://"+IP+"/coollection/usuarios/read.php?id=";
 
     //Perfil URL
     private static String ULRCREATEPERFIL = "http://"+IP+"/coollection/perfiles/create.php";
@@ -78,6 +79,54 @@ public class PHPController {
 
     //METODOS
     //Usuarios
+    public void ReadUsuario(String id){
+        String urlread = URLREADUSER + id;
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                urlread,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(c, "EDITAR PERFIL", Toast.LENGTH_SHORT).show();
+                        String id, nombre, apellido, correo, username, password;
+                        try {
+                            id = response.getString("id");
+                            nombre = response.getString("nombre");
+                            apellido = response.getString("apellido");
+                            correo = response.getString("correo");
+                            username = response.getString("username");
+                            password = response.getString("password");
+
+                            Intent i = new Intent(c, EditarPerfilActivity.class);
+                            i.putExtra("usuid", id);
+                            i.putExtra("usunombre", nombre);
+                            i.putExtra("usuapellido", apellido);
+                            i.putExtra("usucorreo", correo);
+                            i.putExtra("usuUsername", username);
+                            i.putExtra("usuPassword", password);
+                            c.startActivity(i);
+
+                        }catch (JSONException e){
+                            System.out.println("ERROR: " + e.getMessage());
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Error al cargar perfil...", Toast.LENGTH_SHORT).show();
+                        System.out.println("----------------------------");
+                        System.out.println("ERROR: " + error.getMessage());
+                        System.out.println("----------------------------");
+                    }
+                }
+        );
+
+        requestQueue.add(jsonObjectRequest);
+    }
+
     public void Register(String nom, String ape, String email ,String user, String pass){
 
         final String nombre = nom;
@@ -252,18 +301,20 @@ public class PHPController {
 
     public void EditUser(String id, String nom, String ape, String email, String user, String pass){
         final String idUser = id;
-        final String nombreUser = id;
-        final String apellidoUser = id;
-        final String correoUser = id;
-        final String usernameUser = id;
-        final String passwordUser = id;
+        final String nombreUser = nom;
+        final String apellidoUser = ape;
+        final String correoUser = email;
+        final String usernameUser = user;
+        final String passwordUser = pass;
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 URLEDITUSER,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(c, "Update Succesful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(c, "Update Succesful, restarting app to apply changes...", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(c, LoginActivity.class);
+                        c.startActivity(i);
                     }
                 },
                 new Response.ErrorListener() {

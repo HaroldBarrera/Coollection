@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,10 +26,15 @@ import models.Usuario;
 public class OpcionesUsuarioActivity extends AppCompatActivity {
 
     //Contenido del layout
+    ImageButton btnIrVerPublicaciones, btnIrEditarPerfil;
 
     //Cabecera
     TextView nusu;
     Intent datosusuario;
+
+    //Barra de progreso
+    ProgressBar barraProgreso;
+    private boolean cargando;
 
     //PHP
     PHPController phpController;
@@ -39,6 +45,9 @@ public class OpcionesUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_opciones_usuario);
 
         //Contenido del layout
+        btnIrEditarPerfil = (ImageButton) findViewById(R.id.btnIrEditarPerfil);
+        btnIrVerPublicaciones = (ImageButton) findViewById(R.id.btnIrVerPublicaciones);
+        barraProgreso = (ProgressBar) findViewById(R.id.progresBarUser);
 
         //PHP
         phpController = new PHPController(this);
@@ -47,8 +56,46 @@ public class OpcionesUsuarioActivity extends AppCompatActivity {
         nusu = (TextView) findViewById(R.id.nusu);
         datosusuario = getIntent();
         String nombreCompletoUsuario = datosusuario.getStringExtra("usuario");
+        String idusuario = datosusuario.getStringExtra("idusuario");
         nusu.setText(nombreCompletoUsuario);
 
+        //ClickListeners
+        btnIrVerPublicaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               VerPublicaciones();
+            }
+        });
+
+        btnIrEditarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditarPerfil(idusuario);
+            }
+        });
+    }
+
+    //Botones
+    public void VerPublicaciones(){
+        if(cargando) {
+            barraProgreso.setVisibility(View.GONE);
+        }
+        else {
+            barraProgreso.setVisibility(View.VISIBLE);
+        }
+        cargando = !cargando;
+    }
+
+    public void EditarPerfil(String id){
+        System.out.println("ID CARGADA: " + id);
+        phpController.ReadUsuario(id);
+        if(cargando) {
+            barraProgreso.setVisibility(View.GONE);
+        }
+        else {
+            barraProgreso.setVisibility(View.VISIBLE);
+        }
+        cargando = !cargando;
     }
 
     //Menu desbordante
