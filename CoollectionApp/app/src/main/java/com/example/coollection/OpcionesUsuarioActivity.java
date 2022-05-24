@@ -131,7 +131,9 @@ public class OpcionesUsuarioActivity extends AppCompatActivity {
     public void acercaApp(){
         new AlertDialog.Builder(this)
                 .setTitle("Acerca de la aplicacion")
-                .setMessage("Esta es una galeria de fotos online")
+                .setMessage("Esta es una galeria de fotos online.\n" +
+                        "Desarrollado para la asignatura de DESARROLLO MOVIL.\n" +
+                        "Trabajo Final de Curso-TFC y periodo académico.")
                 .setPositiveButton("Salir",
                         new DialogInterface.OnClickListener() {
                             @TargetApi(11)
@@ -165,6 +167,36 @@ public class OpcionesUsuarioActivity extends AppCompatActivity {
                             }
                         })
                 .setNegativeButton("Continuar", new DialogInterface.OnClickListener() {
+                    @TargetApi(11)
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    //Restringiendo botones de regreso
+
+
+    @Override
+    public void onBackPressed() {
+        alertOneButton();
+    }
+
+    private void alertOneButton() {
+        new AlertDialog.Builder(OpcionesUsuarioActivity.this)
+                .setTitle("Cerrar Sesíón")
+                .setMessage("Está seguro de salir...?")
+                .setPositiveButton("Si",
+                        new DialogInterface.OnClickListener() {
+                            @TargetApi(11)
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(Intent.ACTION_MAIN);
+                                intent.addCategory(Intent.CATEGORY_HOME);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                finish();
+                            }
+                        })
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @TargetApi(11)
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
