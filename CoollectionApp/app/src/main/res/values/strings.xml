@@ -42,6 +42,8 @@
 
     <!-- EditPerfilActivity -->
     <string name="edit_btn"><b>GUARDAR CAMBIOS</b></string>
+    <string name="kill_btn"><b>ELIMINAR</b></string>
+    <string name="create_btn"><b>CREAR</b></string>
 
     <!-- Items -->
     <!-- perfil -->

@@ -49,6 +49,7 @@ public class PHPController {
 
     //Perfil URL
     private static String ULRCREATEPERFIL = "http://"+IP+"/coollection/perfiles/create.php";
+    private static String ULRCREATEPERFILADMIN = "http://"+IP+"/coollection/perfiles/crearPerfiles.php";
     private static String URLREADALLPERFIL = "http://"+IP+"/coollection/perfiles/readAll.php";
     private static String URLEDITPERFIL = "http://"+IP+"/coollection/perfiles/update.php";
     private static String URLDELETEPERFIL = "http://"+IP+"/coollection/perfiles/delete.php";
@@ -407,6 +408,47 @@ public class PHPController {
         requestQueue.add(stringRequest);
     }
 
+    public void crearPerfil(String tip, String cod, String userid){
+        final String tipo = tip;
+        final String codigo = cod;
+        final String idusuario = userid;
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ULRCREATEPERFILADMIN,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("-----------------------");
+                        System.out.println("PERFIL CREADO CON EXITO");
+                        Toast.makeText(c, "PERFIL CREADO CON EXITO", Toast.LENGTH_SHORT).show();
+                        System.out.println("-----------------------");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("-----------------------");
+                        System.out.println("ERROR CREANDO EL PERFIL");
+                        Toast.makeText(c, "ERROR CREANDO EL PERFIL", Toast.LENGTH_SHORT).show();
+                        System.out.println("Err: " + error.getMessage());
+                        System.out.println("-----------------------");
+
+                    }
+                }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("tipo", tipo);
+                params.put("codigo", codigo);
+                params.put("idusuario", idusuario);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
     public void ReadAllPerfiles(){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -543,7 +585,7 @@ public class PHPController {
     }
 
     //Comentarios
-    private void crearComentario(String text, String user, String post){
+    public void crearComentario(String text, String user, String post){
 
         final String texto = text;
         final String idpublicacion = post;
@@ -557,6 +599,7 @@ public class PHPController {
                     public void onResponse(String response) {
                         System.out.println("-----------------------");
                         System.out.println("COMENTARIO CREADO CON EXITO");
+                        Toast.makeText(c, "COMENTARIO CREADO CON EXITO", Toast.LENGTH_SHORT).show();
                         System.out.println("-----------------------");
                     }
                 },
@@ -565,6 +608,7 @@ public class PHPController {
                     public void onErrorResponse(VolleyError error) {
                         System.out.println("-----------------------");
                         System.out.println("ERROR CREANDO EL COMENTARIO");
+                        Toast.makeText(c, "ERROR CREANDO EL COMENTARIO", Toast.LENGTH_SHORT).show();
                         System.out.println("Err: " + error.getMessage());
                         System.out.println("-----------------------");
 
@@ -720,7 +764,7 @@ public class PHPController {
     }
 
     //Publicaciones
-    private void crearPublicacion(String usuario, String imagen){
+    public void crearPublicacion(String usuario, String imagen){
 
         final String idusuario = usuario;
         final String idimagen = imagen;
@@ -892,7 +936,7 @@ public class PHPController {
     }
 
     //Imagenes
-    private void crearImagen(String urlimagen, String description){
+    public void crearImagen(String urlimagen, String description){
 
         final String imagen = urlimagen;
         final String descripcion = description;
