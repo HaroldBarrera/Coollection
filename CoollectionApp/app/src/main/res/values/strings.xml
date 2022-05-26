@@ -39,6 +39,7 @@
     <!-- UsuarioActivity -->
     <string name="user_profile"><b><u>VER PERFIL</u></b></string>
     <string name="user_editprofile">EDIT</string>
+    <string name="user_back">VOLVER</string>
 
     <!-- EditPerfilActivity -->
     <string name="edit_btn"><b>GUARDAR CAMBIOS</b></string>

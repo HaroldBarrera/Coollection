@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Coollection"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".VerPublicacionesActivity"
+            android:exported="false" />
+        <activity
             android:name=".CrudActivity"
             android:exported="false" />
         <activity

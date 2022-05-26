@@ -77,6 +77,7 @@ public class OpcionesUsuarioActivity extends AppCompatActivity {
 
     //Botones
     public void VerPublicaciones(){
+        phpController.ReadAllImagenesdos();
         if(cargando) {
             barraProgreso.setVisibility(View.GONE);
         }

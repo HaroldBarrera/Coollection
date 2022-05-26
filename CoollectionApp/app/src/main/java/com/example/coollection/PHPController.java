@@ -36,8 +36,8 @@ public class PHPController {
     Context c;
     RequestQueue requestQueue;
 
-    private static String IP = "192.168.10.15"; //Casa
-    //private static String IP = "172.17.2.67"; //USB
+    //private static String IP = "192.168.10.15"; //Casa
+    private static String IP = "172.17.1.17"; //USB
 
     //Usuario URLS
     private static String URLREGISTER = "http://"+IP+"/coollection/usuarios/register.php";
@@ -985,6 +985,36 @@ public class PHPController {
                     public void onResponse(JSONArray response) {
                         ArrayList<Imagen> lista = generarListaImagenes(response);
                         Intent intent = new Intent(c, MostrarTablaActivity.class);
+                        intent.putExtra("tipotabla", "Imagenes");
+                        intent.putExtra("tipolista", lista);
+                        c.startActivity(intent);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Error al generar imagenes...", Toast.LENGTH_SHORT).show();
+                        System.out.println("----------------------------");
+                        System.out.println("ERROR: " + error.getMessage());
+                        System.out.println("----------------------------");
+                    }
+                }
+        );
+
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+    public void ReadAllImagenesdos(){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                URLREADALLIMAGENES,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ArrayList<Imagen> lista = generarListaImagenes(response);
+                        Intent intent = new Intent(c, VerPublicacionesActivity.class);
                         intent.putExtra("tipotabla", "Imagenes");
                         intent.putExtra("tipolista", lista);
                         c.startActivity(intent);
